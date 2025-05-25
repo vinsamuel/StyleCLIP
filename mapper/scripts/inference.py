@@ -35,7 +35,7 @@ def run(test_opts):
 	net.eval()
 	net.cuda()
 
-	test_latents = torch.load(opts.latents_test_path)
+	test_latents = torch.load(opts.latents_test_path, weights_only=False)
 	if opts.work_in_stylespace:
 		dataset = StyleSpaceLatentsDataset(latents=[l.cpu() for l in test_latents], opts=opts)
 	else:
