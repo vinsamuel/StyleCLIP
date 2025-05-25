@@ -36,7 +36,7 @@ def main(args):
     mean_latent = g_ema.mean_latent(4096)
 
     if args.latent_path:
-        latent_code_init = torch.load(args.latent_path).cuda()
+        latent_code_init = torch.load(args.latent_path, weights_only=False).cuda()
     elif args.mode == "edit":
         latent_code_init_not_trunc = torch.randn(1, 512).cuda()
         with torch.no_grad():
